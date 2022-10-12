@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+// import { UserContext } from "../../context/user.context";
 import {
   createUserDocWithEmailAndPassword,
   createUserDocFromAuth,
@@ -18,6 +19,8 @@ const SignUpForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
 
+  // const { dispatch } = useContext(UserContext);
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormFields((prevState) => ({ ...prevState, [name]: value }));
@@ -32,6 +35,8 @@ const SignUpForm = () => {
     }
     try {
       const { user } = await createUserDocWithEmailAndPassword(email, password);
+
+      // dispatch({ type: "SIGNIN", payload: user });
 
       await createUserDocFromAuth(user, { displayName });
       setFormFields(defaultFormFields);
@@ -81,7 +86,7 @@ const SignUpForm = () => {
           name="confirmPassword"
           value={confirmPassword}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit">Sign Up</Button>
       </form>
     </div>
   );
