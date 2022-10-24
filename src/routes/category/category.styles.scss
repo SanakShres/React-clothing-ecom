@@ -1,0 +1,14 @@
+.category-products-container {
+  & > .title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+  }
+  .products-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 50px 20px;
+  }
+}
